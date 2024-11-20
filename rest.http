@@ -2,3 +2,41 @@
 
 ###server test 
  GET http://localhost:8000
+
+### Sign up 
+POST {{rootapi}}/auth/signup
+Content-Type: application/json
+
+{
+  "fName":"sagar",
+  "lName":"poudel",
+  "email" :"sagar@email.com",
+  "phone":"0415367939",
+  "password":"sagar"
+}
+
+### login
+POST {{rootapi}}/auth/login
+Content-Type: application/json
+
+{
+  "email" : "sagar@email.com",
+  "password": "sagar"
+}
+
+
+### get all books 
+
+GET {{rootapi}}/book
+Content-Type: application/json
+
+### Add Book 
+POST {{rootapi}}/book/addBook
+Content-Type: application/json
+
+{
+  "title":"new",
+  "author":"new",
+  "isbn" :"12398848",
+  "genre":"horror"
+}
