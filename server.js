@@ -4,7 +4,7 @@ import authRouter from "./src/routers/AuthRouter.js";
 import bookRouter from "./src/routers/BookRouter.js"
 import { connectMongoDB } from "./src/config/dbConfig.js";
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT;
 connectMongoDB();
 
 //**Middle wares */
@@ -14,7 +14,6 @@ app.use(cors());
 //** Routers  */
 
 app.get("/",(req,res) => {
-    console.log("api call")
     res.send("running")
 })
 app.use("/api/v1/auth", authRouter);
