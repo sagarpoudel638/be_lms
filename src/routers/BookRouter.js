@@ -1,4 +1,5 @@
-import { addBook, getBook, getBookbyID } from "../models/books/bookModel.js";
+import { addBookValidator } from "../middlewares/joiValidation.js";
+import { addBook, deleteBook, getBook, getBookbyID } from "../models/books/bookModel.js";
 
 import express from "express";
 const router = express.Router();
@@ -33,7 +34,17 @@ router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const bookData = await getBookbyID(id);
-    
+    if (!bookData){
+        const errObj = {
+            status: "error",
+            message: "Not Found",
+            error: {
+              code: 400,
+              details: "book not found",
+            },
+          };
+          return res.status(404).send(errObj);
+      }
     const respObj = {
       status: "success",
       message: "Book fetched",
@@ -55,7 +66,7 @@ router.get("/:id", async (req, res) => {
 //**Private Controllers */
 /** Add Book */
 
-router.post("/addBook", async (req, res) => {
+router.post("/addBook", addBookValidator, async (req, res) => {
   try {
     let {
       title,
@@ -98,6 +109,43 @@ router.post("/addBook", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const { id } = req.params;
+
+    try {
+        const { id } = req.params;
+        const bookData = await getBookbyID(id);
+      
+        if (!bookData){
+          const errObj = {
+              status: "error",
+              message: "Not Found",
+              error: {
+                code: 400,
+                details: "book not found",
+              },
+            };
+            return res.status(404).send(errObj);
+        }
+        await deleteBook(id);
+      
+        const respObj = {
+          status: "success",
+          message: "Book Deleted Successfully!",
+        };
+        return res.status(200).send(respObj);
+    } catch (err) {
+        console.log(err);
+        const errObj = {
+          status: "error",
+          message: "Error Deleting",
+          error: {
+            code: 500,
+            details: err.message || "Error Deleting Book",
+          },
+        };
+    
+        return res.status(500).send(errObj);
+      }
+ 
+  
 });
 export default router;

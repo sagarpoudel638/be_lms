@@ -1,29 +1,32 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import { createUser, findUser } from "../models/user/userModel.js";
-import { loginValidator,signupValidator } from "../middlewares/joiValidation.js";
+import {
+  loginValidator,
+  signupValidator,
+} from "../middlewares/joiValidation.js";
 
 const router = express.Router();
 //**Sign UP  */
-router.post("/signup", signupValidator, async (req,res) => {
-try {
-  console.log(req.body)
-    const {fName,lName,email,password,phone} = req.body;
+router.post("/signup", signupValidator, async (req, res) => {
+  try {
+    console.log(req.body);
+    const { fName, lName, email, password, phone } = req.body;
     const salt = await bcrypt.genSalt(10);
     const hashedpassword = await bcrypt.hash(password, salt);
     const userData = await createUser({
-        fName,
-        lName,
-        phone,
-        email,
-        password: hashedpassword,
-      });
-      const respObj = {
-        status: "success",
-        message: "User created successfully!",
-      };
-      res.status(200).send(respObj);
-} catch (error) {
+      fName,
+      lName,
+      phone,
+      email,
+      password: hashedpassword,
+    });
+    const respObj = {
+      status: "success",
+      message: "User created successfully!",
+    };
+    res.status(200).send(respObj);
+  } catch (error) {
     let errObj = {
       status: "error",
       message: "Error Creating",
@@ -35,10 +38,7 @@ try {
 
     res.status(500).send(errObj);
   }
-
-    
-})
-
+});
 
 //**Login  */
 
@@ -57,14 +57,21 @@ router.post("/login", loginValidator, async (req, res) => {
       });
     }
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log(isMatch)
+    console.log(isMatch);
     if (isMatch) {
+      const token = jwt.sign(
+        { _id: user._id, email: user.email, username: user.username },
+        config.jwtSecret,
+        {
+          expiresIn: config.jwtExpire,
+        }
+      );
       const respObj = {
         status: "success",
         message: "Login Successful",
-        data: {user:user.fName},
+        data: { user: user.fName, token },
       };
-      console.log(respObj)
+      console.log(respObj);
       res.status(200).send(respObj);
     } else {
       return res.status(401).send({

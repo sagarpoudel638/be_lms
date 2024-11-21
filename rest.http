@@ -30,6 +30,11 @@ Content-Type: application/json
 GET {{rootapi}}/book
 Content-Type: application/json
 
+
+### get book by id
+GET {{rootapi}}/book/673d53e61a0f82651d97115b
+Content-Type: application/json
+
 ### Add Book 
 POST {{rootapi}}/book/addBook
 Content-Type: application/json
@@ -38,5 +43,11 @@ Content-Type: application/json
   "title":"new",
   "author":"new",
   "isbn" :"12398848",
-  "genre":"horror"
+  "genre":"horror",
+
 }
+
+
+### Delete book 
+DELETE {{rootapi}}/book/673d53e61a0f82651d97115b
+Content-Type: application/json
