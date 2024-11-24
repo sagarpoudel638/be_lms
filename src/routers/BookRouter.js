@@ -1,3 +1,4 @@
+import { authMiddleware } from "../middlewares/Auth.js";
 import { addBookValidator } from "../middlewares/joiValidation.js";
 import { addBook, deleteBook, getBook, getBookbyID } from "../models/books/bookModel.js";
 
@@ -66,7 +67,7 @@ router.get("/:id", async (req, res) => {
 //**Private Controllers */
 /** Add Book */
 
-router.post("/addBook", addBookValidator, async (req, res) => {
+router.post("/addBook",authMiddleware, addBookValidator, async (req, res) => {
   try {
     let {
       title,
@@ -108,7 +109,7 @@ router.post("/addBook", addBookValidator, async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",authMiddleware, async (req, res) => {
 
     try {
         const { id } = req.params;

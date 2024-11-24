@@ -5,6 +5,9 @@ import {
   loginValidator,
   signupValidator,
 } from "../middlewares/joiValidation.js";
+import jwt from "jsonwebtoken";
+import { config } from "../config/config.js";
+import { authMiddleware } from "../middlewares/Auth.js";
 
 const router = express.Router();
 //**Sign UP  */
@@ -95,5 +98,15 @@ router.post("/login", loginValidator, async (req, res) => {
 
     res.status(500).send(errObj);
   }
+});
+
+router.get("/verify", authMiddleware, async (req, res) => {
+  const respObj = {
+    status: "success",
+    message: "Verified",
+    data: { email: req.user.email, _id: req.user._id },
+  };
+
+  return res.status(200).send(respObj);
 });
 export default router;
