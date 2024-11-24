@@ -37,7 +37,7 @@ Content-Type: application/json
 
 ### Add Book 
 POST {{rootapi}}/book/addBook
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzQyZjk0MWQ0NzIyY2IyYzdiYmViNDgiLCJlbWFpbCI6InNhZ2FyQGVtYWlsLmNvbSIsImlhdCI6MTczMjQ0MjYxNywiZXhwIjoxNzMyNTI5MDE3fQ.Lbt6_rUQAaiA6N8CDOalKW5Bl_ztgpOWYG7__85meE4,
+Authorization: Bearer 
 Content-Type: application/json
 
 {
