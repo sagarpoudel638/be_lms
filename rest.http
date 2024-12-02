@@ -32,12 +32,13 @@ Content-Type: application/json
 
 
 ### get book by id
-GET {{rootapi}}/book/673d53e61a0f82651d97115b
+GET {{rootapi}}/book/674664c6231d6bfd121d97e9
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzQyZjk0MWQ0NzIyY2IyYzdiYmViNDgiLCJlbWFpbCI6InNhZ2FyQGVtYWlsLmNvbSIsImlhdCI6MTczMzEyODg3MSwiZXhwIjoxNzMzMjE1MjcxfQ.Mwu9jUP8k89iue77wqUh4OmzcGtzEZu34vkU2qTnuHw
 Content-Type: application/json
 
 ### Add Book 
 POST {{rootapi}}/book/addBook
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzQyZjk0MWQ0NzIyY2IyYzdiYmViNDgiLCJlbWFpbCI6InNhZ2FyQGVtYWlsLmNvbSIsImlhdCI6MTczMjY5NjAwNSwiZXhwIjoxNzMyNzgyNDA1fQ.8f8Uxzx9JyxQf4Is8hm4GZ3XNftiOZrbMy821wdOxUo
 Content-Type: application/json
 
 {
@@ -50,5 +51,17 @@ Content-Type: application/json
 
 
 ### Delete book 
-DELETE {{rootapi}}/book/673d53e61a0f82651d97115b
+DELETE {{rootapi}}/book/674664c6231d6bfd121d97e9
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzQyZjk0MWQ0NzIyY2IyYzdiYmViNDgiLCJlbWFpbCI6InNhZ2FyQGVtYWlsLmNvbSIsImlhdCI6MTczMzEyODg3MSwiZXhwIjoxNzMzMjE1MjcxfQ.Mwu9jUP8k89iue77wqUh4OmzcGtzEZu34vkU2qTnuHw
 Content-Type: application/json
+
+### update Book
+
+PUT  {{rootapi}}/book/6746d7d1f3c9dc2ea6b1526e
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzQyZjk0MWQ0NzIyY2IyYzdiYmViNDgiLCJlbWFpbCI6InNhZ2FyQGVtYWlsLmNvbSIsImlhdCI6MTczMzEyODg3MSwiZXhwIjoxNzMzMjE1MjcxfQ.Mwu9jUP8k89iue77wqUh4OmzcGtzEZu34vkU2qTnuHw
+Content-Type: application/json
+
+{
+  "title":"2nd update"
+}
+

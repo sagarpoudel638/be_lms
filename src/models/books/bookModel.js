@@ -19,5 +19,17 @@ export const deleteBook = async(id)=>{
 }
 
 
+export const updateBook = async (id, updateData) => {
+    const data = await Book.findByIdAndUpdate(
+        id,
+        {
+          $set: updateData,
+        },
+        { new: true }
+      );
+    
+      return data;
+}
+
 
 

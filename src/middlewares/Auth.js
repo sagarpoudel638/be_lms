@@ -36,11 +36,11 @@ export const authMiddleware = (req, res, next) => {
   }
 };
 
-// export const isAdmin = (req, res, next) => {
-//   if (req.userdata.role == "admin") {
-//     next();
-//   } else {
-//     const error = { status: "error", message: "unauthorized action" };
-//   }
-//   return res.json(error);
-// };
+export const isAdmin = (req, res, next) => {
+  if (req.userdata.role == "admin") {
+    next();
+  } else {
+    const error = { status: "error", message: "unauthorized action" };
+  }
+  return res.json(error);
+};
