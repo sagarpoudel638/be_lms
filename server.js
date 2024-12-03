@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import authRouter from "./src/routers/AuthRouter.js";
 import bookRouter from "./src/routers/BookRouter.js"
+import borrowRouter from "./src/routers/BorrowRouter.js"
 import { connectMongoDB } from "./src/config/dbConfig.js";
 import {config} from "./src/config/config.js"
 const app = express();
@@ -19,6 +20,7 @@ app.get("/",(req,res) => {
 })
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/book", bookRouter);
+app.use("api/v1/borrows", borrowRouter);
 
 
 //**Listen Server */

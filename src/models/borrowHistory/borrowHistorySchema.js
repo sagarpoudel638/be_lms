@@ -8,7 +8,7 @@ const borrowHistorySchema = new mongoose.Schema({
   returnDate: { type: Date,},
   status : {type: String,},
   isReviewed : {type: Boolean, default: false,},
-  reviewId: { type: mongoose.Schema.Types.ObjectId, ref: "review", required: true },
+  reviewId: { type: mongoose.Schema.Types.ObjectId, ref: "review"},
   
 });
 
