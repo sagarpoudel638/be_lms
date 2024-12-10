@@ -6,7 +6,7 @@ const borrowHistorySchema = new mongoose.Schema({
   borrowDate: { type: Date, default: Date.now,},
   dueDate: { type: Date, default: () => Date.now() + (7 * 24 * 60 * 60 * 1000)},
   returnDate: { type: Date,},
-  status : {type: String,},
+  status : {type: String, default: "borrowed"},
   isReviewed : {type: Boolean, default: false,},
   reviewId: { type: mongoose.Schema.Types.ObjectId, ref: "review"},
   

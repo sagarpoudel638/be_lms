@@ -33,12 +33,12 @@ Content-Type: application/json
 
 ### get book by id
 GET {{rootapi}}/book/674664c6231d6bfd121d97e9
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzQyZjk0MWQ0NzIyY2IyYzdiYmViNDgiLCJlbWFpbCI6InNhZ2FyQGVtYWlsLmNvbSIsImlhdCI6MTczMzEyODg3MSwiZXhwIjoxNzMzMjE1MjcxfQ.Mwu9jUP8k89iue77wqUh4OmzcGtzEZu34vkU2qTnuHw
+Authorization: Bearer 
 Content-Type: application/json
 
 ### Add Book 
 POST {{rootapi}}/book/addBook
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzQyZjk0MWQ0NzIyY2IyYzdiYmViNDgiLCJlbWFpbCI6InNhZ2FyQGVtYWlsLmNvbSIsImlhdCI6MTczMjY5NjAwNSwiZXhwIjoxNzMyNzgyNDA1fQ.8f8Uxzx9JyxQf4Is8hm4GZ3XNftiOZrbMy821wdOxUo
+Authorization: Bearer 
 Content-Type: application/json
 
 {
@@ -52,16 +52,25 @@ Content-Type: application/json
 
 ### Delete book 
 DELETE {{rootapi}}/book/674664c6231d6bfd121d97e9
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzQyZjk0MWQ0NzIyY2IyYzdiYmViNDgiLCJlbWFpbCI6InNhZ2FyQGVtYWlsLmNvbSIsImlhdCI6MTczMzEyODg3MSwiZXhwIjoxNzMzMjE1MjcxfQ.Mwu9jUP8k89iue77wqUh4OmzcGtzEZu34vkU2qTnuHw
-Content-Type: application/json
+Authorization: Bearer 
 
 ### update Book
 
 PATCH  {{rootapi}}/book/6746d7d1f3c9dc2ea6b1526e
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzQyZjk0MWQ0NzIyY2IyYzdiYmViNDgiLCJlbWFpbCI6InNhZ2FyQGVtYWlsLmNvbSIsImlhdCI6MTczMzEyODg3MSwiZXhwIjoxNzMzMjE1MjcxfQ.Mwu9jUP8k89iue77wqUh4OmzcGtzEZu34vkU2qTnuHw
+Authorization: Bearer 
 Content-Type: application/json
 
 {
   "title":"2nd update"
+}
+
+### Borrow book 
+POST  {{rootapi}}/borrows
+Content-Type: application/json
+
+{
+  "userId":"6742f941d4722cb2c7bbeb48",
+  "bookId": "6746d7d1f3c9dc2ea6b1526e",
+  "borrowDate": "2024-12-04"
 }
 
